@@ -1,11 +1,9 @@
-<!DOCTYPE html>
 <html>
  <head>
   <title>Дмитрий Сомов</title>
   <meta charset="utf-8">
  </head>
  <body> 
-    <h4>dimass</h4>
     <input type="number" value="2" id="n1">x +
     <input type="number" value="3" id="n2">y =
     <input type="number" value="18" id="n3"><br>
