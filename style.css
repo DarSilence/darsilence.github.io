@@ -1,1 +1,31 @@
+.amount_bar__manage_input{
+    width: 20px; 
+    text-align: center;
+}
 
+.site_name__h1{
+    text-align: center;
+    float: center;
+}
+
+.goods_basket{
+    float: right;
+}
+
+.basket_block{
+    float: right;
+}
+
+.block{}
+
+.good_img{}
+
+.good_name{}
+
+.amount_bar__manage{}
+
+.amount_bar__manage_decr{}
+
+.amount_bar__manage_input{}
+
+.amount_bar__manage_incr{}
