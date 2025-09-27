@@ -17,15 +17,17 @@
 }
 
 .table_blocks{ 
+  text-align: center;
   display: grid; 
-  grid-template-columns:  20% 20% 20%;  
-  grid-template-rows: 200px; 
-  background-color: beige; 
+  margin: 100px; 
+  grid-template-columns:  repeat(3, 25%);
+  gap: 12.5%;
+  grid-template-rows: repeat(4, 200px); 
+  /* background-color: beige;  */
 } 
-.table_blocks > div { 
+/*.table_blocks > div { 
   background-color: green; 
-  margin: 10px; 
-}
+} */
 
 .block{}
 
