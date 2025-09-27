@@ -16,13 +16,13 @@
     float: right;
 }
 
-.flex-wrapper{ 
+.table_blocks{ 
   display: grid; 
   grid-template-columns:  20% 20% 20%;  
   grid-template-rows: 200px; 
   background-color: beige; 
 } 
-.flex-wrapper > div { 
+.table_blocks > div { 
   background-color: green; 
   margin: 10px; 
 }
