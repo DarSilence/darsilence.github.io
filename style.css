@@ -17,13 +17,13 @@
 }
 
 .flex-wrapper{ 
-  display: flex; 
+  display: grid; 
+  grid-template-columns:  20% 20% 20%;  
+  grid-template-rows: 200px; 
   background-color: beige; 
 } 
 .flex-wrapper > div { 
   background-color: green; 
-  height: 100px; 
-  width: 100px; 
   margin: 10px; 
 }
 
