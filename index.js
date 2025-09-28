@@ -100,100 +100,188 @@ const goods = {
     },
 };
 
-
-// id="block1"
-// id="good_img1"
-// id="good_name1"
-// id="good_price1"
-// id="buy_but1"
-// id="decr_but1"
-// id="amount_input1"
-// id="incr_but1"
-
 function updatePage() {
+    getStorage();
     for (const id in goods){
+        updateInput(id);
         updateImage(id);
         updateTitle(id);
-    }
+        updatePrice(id);
+        updateAmount(id);
+    };
+    updateBasket();
 };
 
 function updateImage(id) {
-    let reflink = "good_img" + id;
-    console.log(reflink);
-    let pool = document.getElementById(reflink);
-    pool.src = goods[id].image;
-    pool.alt = `Здесь товар ${id}`;
+    reflink = "good_img" + id;
+    elem = document.getElementById(reflink);
+    elem.src = goods[id].image;
+    elem.alt = `Здесь товар ${id}`;
 };
 
 function updateTitle(id) {
-    let reflink = "good_name1";
-    console.log(reflink);
-    let pool = document.getElementById(name);
-    pool.innerHTML = goods[id].title;
+    reflink = "good_name" + id;
+    elem = document.getElementById(reflink);
+    const textNode = document.createTextNode(goods[id].title);
+    elem.appendChild(textNode);
 };
- 
-function isValid(event, id) {
+
+function updatePrice(id) {
+    reflink = "good_price" + id;
+    elem = document.getElementById(reflink);
+    const textNode = document.createTextNode(`Цена: ${goods[id].price} р`);
+    elem.appendChild(textNode);
+};
+
+function updateAmount(id){
+    if (cart[id] == 0){
+        showElement(`buy_but${id}`)
+        hidElement(`decr_but${id}`);
+        hidElement(`amount_input${id}`);
+        hidElement(`incr_but${id}`);
+    }
+    else{
+        hidElement(`buy_but${id}`)
+        showElement(`decr_but${id}`);
+        showElement(`amount_input${id}`);
+        showElement(`incr_but${id}`);
+    }
+};
+
+function hidElement(reflink) {
+    elem = document.getElementById(reflink);
+    state = elem.style.display;
+    if (state != 'none') elem.style.display='none'; //если включен, то выключаем
+    else elem.style.display='';
+};
+
+function showElement(reflink) {
+    elem = document.getElementById(reflink);
+    state = elem.style.display;
+    if (state == 'none') elem.style.display=''; //если выключен, то включаем
+};
+
+function isValid(event) {
   const validChars = ["Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8",
   "Digit9", "Digit0", "Numpad1", "Numpad2", "Numpad3", "Numpad4", "Numpad5", "Numpad6", "Numpad7",
   "Numpad8", "Numpad9", "Numpad0"];
-  
   return validChars.includes(event.code);
 };
 
+function changeInput(event, id) {
+    if (event.code == "Enter" || event.code == "NumpadEnter") {
+        elem = document.getElementById(id);
+        elem.value = Number(elem.value);
+        numEl = parseInt(id.match(/\d+/))
+        cart[numEl] = Number(elem.value);
+        updateBasket();
+        saveStorage();
+        if (elem.value == 0){
+            updateAmount(numEl);
+        }
+    }
+}
 
 function increase(id){
-    return null;
-};
-
-function showCart() {
-    let out = '<table>';
-    out += `<tr><td colspan="2"></td><td>Title</td><td>Quantity</td><td>Price</td></tr>`
-    let total = 0;
-    for (const id in cart) {
-        out += '<tr>';
-        out += `<td><button class="cart__remove_good" data-id="${id}">X</button></td>`;
-        out += `<td><img scr="${goods[id].image}" style="max-width:64px"></td>`;
-        out += `<td>${goods[id].title}</td>`;
-        out += `<td><button class="cart__decrease_amount" data-id="${id}">-</button>${cart[id]}<button class="cart__increase_amount" data-id="${id}">+</button></td>`;
-        out += `<td>${goods[id].price * cart[id]}</td>`;
-        out += '</tr>';
-        total += goods[id].price * cart[id];
+    numId = parseInt(id.match(/\d+/))
+    cart[`${numId}`]++;
+    updateInput(numId);
+    updateBasket();
+    saveStorage();
+    if (cart[`${numId}`] == 1){
+        updateAmount(numId);
     }
-    if (total != 0)
-    {
-        out += `<tr><td colspan="4">Total: </td><td>${total}</td></tr>`;
+};
+
+function decrease(id){
+    numId = parseInt(id.match(/\d+/))
+    cart[`${numId}`]--;
+    updateInput(numId);
+    updateBasket();
+    saveStorage();
+    if (cart[`${numId}`] == 0){
+        updateAmount(numId);
     }
-    out += '</table>';
-    
-    document.querySelector('.cart-field').innerHTML = out;
 };
 
-document.querySelector('.cart-field').addEventListener('click', (event)=> {
-    const item = event.target;
-    if (item.classList.contains('cart__remove_good')){ cartRemove(item.dataset.id);}
-    if (item.classList.contains('cart__increase_amount')){ cartIncrease(item.dataset.id);}
-    if (item.classList.contains('cart__decrease_amount')){ cartDecrease(item.dataset.id);}
-    showCart();
-});
+function zero(id){
+    numId = parseInt(id.match(/\d+/))
+    cart[`${numId}`] = 0;
+    updateInput(numId);
+    updateBasket();
+    updateAmount(numId);
+    saveStorage();
+};
 
-function cartDecrease(id){
-    cart[id]--;
-    if (cart[id] == 0)
-    {
-        cartRemove(id);
+function updateInput(id) {
+    elem = document.getElementById(`amount_input${id}`);
+    elem.value = cart[id];
+}
+
+function useBasket(){
+    elem = document.getElementById("basket_block");
+    state = elem.style.display;
+    if (state != 'none') elem.style.display='none';
+    if (state == 'none') elem.style.display='block';
+};
+
+function updateBasket(){
+    out = `<table style="width: 100%">`;
+    total = 0;
+    for (const id in cart){
+        if (cart[id] > 0){
+            out += `<tr>`;
+            out += `<td><button id="${id}" name=zero type=button  onclick="zero(this.id)">X</button></td>`
+            out += `<td>${goods[id].title}</td>`;
+            out += `<td><button id="${id}" name=decrease type=button  onclick="decrease(this.id)">-</button></td>`;
+            out += `<td>${cart[id]}</td>`;
+            out += `<td><button id="${id}" name=decrease type=button  onclick="increase(this.id)">+</button></td>`;
+            out += `<td>${goods[id].price * cart[id]} р</td>`
+            out += "</tr>";
+            total += goods[id].price * cart[id];
+        }
     }
-    // showCart();
+    if (total > 0){
+        out += `<tr><td colspan=5 style="text-align: right;">Итого:</td><td>${total} р</td></tr>`
+    }
+    out += "</table>";
+
+    document.querySelector('.basket_block__main').innerHTML = out;
 };
 
-function cartIncrease(id){
-    cart[id]++;
-    // showCart();
-};
+function showOrder(){
+    total = 0;
+    for (const id in cart){ total += cart[id];}
+    if (total > 0) {        
+        console.log(total);
+        elem = document.getElementById("order_block");
+        console.log(elem);
+        state = elem.style.display;
+        console.log(state);
+        elem.style.display='block';
+    }
+}
 
-function cartRemove(id){
-    delete cart[id];
-    // showCart();
-};
+function saveStorage(){
+    try{
+        for (const id in cart){
+            localStorage.setItem(`${id}`, `${cart[id]}`);
+        }
+    } catch {
+        return;
+    }
+}
 
-showCart();
-updatePage();
+function getStorage(){
+    try{
+        for (const id in cart){
+            cart[id] = Number(localStorage.getItem(`${id}`));
+        }
+    } catch {
+        return;
+    }
+}
+
+// function makeOrder(){
+
+// }
