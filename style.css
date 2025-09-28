@@ -1,44 +1,143 @@
 .amount_bar__manage_input{
-    width: 20px; 
+    width: 30px; 
     text-align: center;
 }
 
-.site_name__h1{
+/* .page_name{
+} */
+
+
+.page_name__h1{
     text-align: center;
-    float: center;
 }
 
 .goods_basket{
-    float: right;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
 }
 
 .basket_block{
-    float: right;
+    display: none;
+    width: 20%;
+    min-width: 300px;
+    max-height: 60%;
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background-color: rgb(217, 217, 236);
+} 
+
+.basket_block__header{
+    margin: 20px 20px 20px 20px;
+    text-align: left;
+    font-size: 16pt;
+    font-weight: 600;
+}
+
+.basket_block__main{
+    margin: 20px 20px 20px 20px;
+    text-align: left;
+}
+
+
+.basket_block__footer{
+    margin: 0px 10px 10px 10px;
+    text-align: right;
+}
+
+.basket_block__footer_button{
+    font-size: 14pt;
+}
+
+.order_block{
+    position: fixed;
+    top: 100px;
+    min-width: 300px;
+    width: 20%;
+    height: 42%;
+    margin: 10% 40% 10% 40%;
+    padding: 10px 20px 10px 20px;
+    text-align: left;
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 30px;
+    flex-direction: column;
+    display: none;
+    background-color: aquamarine;
+}
+
+.order_block__close{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    text-align: right;
+}
+
+
+.order_input{
+    width: 90%;
+    margin: 5px;
+}
+
+.order_button{
+    margin: auto;
+    position: absolute;
+    bottom: 5%;
+    align-items: center;
+    left: 30%;
+    right: 30%;
+    width: 40%;
+    font-size: 12pt;
+}
+
+.succsess_block{
+    position: fixed;
+    top: 100px;
+    width: 20%;
+    height: 40%;
+    margin: 10% 40% 10% 40%;
+    padding: 10px 20px 10px 20px;
+    text-align: left;
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 30px;
+    flex-direction: column;
+    display: none;
+    background-color: aquamarine;
 }
 
 .table_blocks{ 
-  text-align: center;
-  display: grid; 
-  margin: 100px; 
-  grid-template-columns:  repeat(3, 25%);
-  gap: 12.5%;
-  grid-template-rows: repeat(4, 200px); 
-  /* background-color: beige;  */
+    width: 70%;
+    margin: 5% 15% 5% 15%;
+    text-align: center;
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
 } 
-/*.table_blocks > div { 
-  background-color: green; 
-} */
 
-.block{}
+.block{
+    width: 30%;
+    min-width: 200px;
+    background: #ffffff;
+    padding: 20px 0px 50px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
 
-.good_img{}
+/* .good_img{} */
 
-.good_name{}
+/* .good_name{} */
 
-.amount_bar__manage{}
+/* .amount_bar__manage{} */
 
-.amount_bar__manage_decr{}
+/* .amount_bar__manage_decr{} */
 
-.amount_bar__manage_input{}
+/* .amount_bar__manage_input{} */
 
-.amount_bar__manage_incr{}
+/* .amount_bar__manage_incr{} */
