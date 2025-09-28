@@ -283,5 +283,4 @@ function getStorage(){
 }
 
 // function makeOrder(){
-
 // }
