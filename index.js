@@ -1,28 +1,135 @@
 const cart = {
-    "1" : 1,
-    "2" : 2,
-    "3" : 4,
+    "1" : 0,
+    "2" : 0,
+    "3" : 0,
+    "4" : 0,
+    "5" : 0,
+    "6" : 0,
+    "7" : 0,
+    "8" : 0,
+    "9" : 0,
+    "10" : 0,
+    "11" : 0,
+    "12" : 0,
 };
 
 const goods = {
     "1" : {
         "id" : "1",
-        "title" : "sth1",
+        "title" : "Товар 1",
         "price" : 100,
-        "image" : "/components/..."
+        "image" : "/components/...",
+        "block" : "block1"
     },
     "2" : {
         "id" : "2",
-        "title" : "sth2",
+        "title" : "Товар 2",
         "price" : 200,
-        "image" : "/components/..."
+        "image" : "/components/...",
+        "block" : "block2"
     },
     "3" : {
         "id" : "3",
-        "title" : "sth3",
+        "title" : "Товар 3",
         "price" : 300,
-        "image" : "/components/..."
+        "image" : "/components/...",
+        "block" : "block3"
     },
+    "4" : {
+        "id" : "4",
+        "title" : "Товар 4",
+        "price" : 130,
+        "image" : "/components/...",
+        "block" : "block4"
+    },
+    "5" : {
+        "id" : "5",
+        "title" : "Товар 5",
+        "price" : 230,
+        "image" : "/components/...",
+        "block" : "block5"
+    },
+    "6" : {
+        "id" : "6",
+        "title" : "Товар 6",
+        "price" : 330,
+        "image" : "/components/...",
+        "block" : "block6"
+    },
+    "7" : {
+        "id" : "7",
+        "title" : "Товар 7",
+        "price" : 150,
+        "image" : "/components/...",
+        "block" : "block7"
+    },
+    "8" : {
+        "id" : "8",
+        "title" : "Товар 8",
+        "price" : 250,
+        "image" : "/components/...",
+        "block" : "block8"
+    },
+    "9" : {
+        "id" : "9",
+        "title" : "Товар 9",
+        "price" : 350,
+        "image" : "/components/...",
+        "block" : "block9"
+    },
+    "10" : {
+        "id" : "10",
+        "title" : "Товар 10",
+        "price" : 170,
+        "image" : "/components/...",
+        "block" : "block10"
+    },
+    "11" : {
+        "id" : "11",
+        "title" : "Товар 11",
+        "price" : 270,
+        "image" : "/components/...",
+        "block" : "block11"
+    },
+    "12" : {
+        "id" : "12",
+        "title" : "Товар 12",
+        "price" : 370,
+        "image" : "/components/...",
+        "block" : "block12"
+    },
+};
+
+
+// id="block1"
+// id="good_img1"
+// id="good_name1"
+// id="good_price1"
+// id="buy_but1"
+// id="decr_but1"
+// id="amount_input1"
+// id="incr_but1"
+
+function updatePage() {
+    for (const id in goods){
+        updateImage(id);
+        updateTitle(id);
+    }
+};
+
+function updateImage(id) {
+    let reflink = "good_img" + id;
+    console.log(reflink);
+    let pool = document.getElementById(reflink);
+    pool.src = goods[id].image;
+    pool.alt = `Здесь товар ${id}`;
+};
+
+function updateTitle(id) {
+    let reflink = "good_name1";
+    console.log(reflink);
+    let pool = document.getElementById(name);
+    pool.innerHTML = goods[id].title;
 };
  
 function isValid(event, id) {
@@ -30,18 +137,13 @@ function isValid(event, id) {
   "Digit9", "Digit0", "Numpad1", "Numpad2", "Numpad3", "Numpad4", "Numpad5", "Numpad6", "Numpad7",
   "Numpad8", "Numpad9", "Numpad0"];
   
-//   let element = getElementById(id);
-//   var t_value = Number(text.value);
-//   text.setAttribute("value", "\!");
-//   text.dispatchEvent(event);
-  
   return validChars.includes(event.code);
-}
+};
 
 
 function increase(id){
     return null;
-}
+};
 
 function showCart() {
     let out = '<table>';
@@ -64,7 +166,7 @@ function showCart() {
     out += '</table>';
     
     document.querySelector('.cart-field').innerHTML = out;
-}
+};
 
 document.querySelector('.cart-field').addEventListener('click', (event)=> {
     const item = event.target;
@@ -81,16 +183,17 @@ function cartDecrease(id){
         cartRemove(id);
     }
     // showCart();
-}
+};
 
 function cartIncrease(id){
     cart[id]++;
     // showCart();
-}
+};
 
 function cartRemove(id){
     delete cart[id];
     // showCart();
-}
+};
 
 showCart();
+updatePage();
