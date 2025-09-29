@@ -17,53 +17,64 @@
 </head>
 <body onload="updatePage()">
    <header class="page_name">
-        <h1 class="page_name__h1">Laugh Shop</h1>
+      <h1 class="page_name__h1">Laugh Shop</h1>
 
-        <button class="goods_basket" id="basket_but" onclick="useBasket()">
-            <img class="basket_img">
-        </button>
+      <button class="goods_basket" id="basket_but" onclick="useBasket()">
+         <img class="basket_img">
+      </button>
 
-        <div class="basket_block" id="basket_block">
-            <header class="basket_block__header">
-                Корзина
-            </header>   
-            <main class="basket_block__main">
-            </main>
-            <footer class="basket_block__footer">
-                <button class="basket_block__footer_button" id="basket_order" onclick="showOrder()">
-                    Оформить заказ
-                </button>
-            </footer>   
-        </div>
+      <div class="order_block" id="order_block">
+         <header class="order_block_header">
+            Оформление заказа
+            <button class="order_block__close" id="order_close" onclick='hidElement("order_block")'>X</button>
+         </header>
+         
+         <p class="order_entry">Имя:</p>
+
+         <input class="order_input" id="order_name" value="" onkeypress="styleInput(this.id)" onclick="styleInput(this.id)">
+
+         <p class="order_entry">Фамилия:</p>
+
+         <input class="order_input" id="order_surname" value="" onkeypress="styleInput(this.id)" onclick="styleInput(this.id)">
+
+         <p class="order_entry">Адрес доставки:</p>
+
+         <input class="order_input" id="order_address" value="" onkeypress="styleInput(this.id)" onclick="styleInput(this.id)">
+
+         <p class="order_entry">Контактный номер телефона:</p>
+
+         <input class="order_input" id="order_phone" value="" onclick="styleInput(this.id)" onkeypress="return isValid(event, this.id)">
+         <br>
+
+         <p class="order_entry_button">
+            <button class="order_button" id="order_but" onclick='makeOrder("order_block", "succsess_bl")'>Создать заказ</button>
+         </p>
+      </div>
+
+      <div class="succsess_block" id="succsess_bl">
+         <p class="succsess_block_button">
+            <button class="succsess_block__but" id="succsess_close" onclick='hidElement("succsess_bl")'>X</button>
+         </p>
+         <p class="succsess_block_para">
+            Заказ успешно оформлен!
+         </p>
+      </div>  
+
+      <div class="basket_block" id="basket_block">
+         <header class="basket_block__header">
+               Корзина
+         </header>   
+         <div class="basket_block__main">
+         </div>
+         <div class="basket_block__sum">
+         </div>
+         <footer class="basket_block__footer">
+               <button class="basket_block__footer_button" id="basket_order" onclick="showOrder()">
+                  Оформить заказ
+               </button>
+         </footer>   
+      </div>
    </header>
-
-    <div class="order_block" id="order_block">
-        <button class="order_block__close" id="order_close" onclick='hidElement("order_block")'>X</button>
-        
-        <p class="order_entry">Имя:</p>
-
-        <input class="order_input" value="">
-
-        <p class="order_entry">Фамилия:</p>
-
-        <input class="order_input" value="">
-
-        <p class="order_entry">Адрес доставки:</p>
-
-        <input class="order_input" value="">
-
-        <p class="order_entry">Контактный номер телефона:</p>
-
-        <input class="order_input" value="" onkeypress="return isValid(event)">
-        <br>
-
-        <button class="order_button" id="order_but" onclick="makeOrder()">Создать заказ</button>
-    </div>
-
-    <div class="succsess_block">
-        <button class="succsess_block__but" id="succsess_close" onclick="hidElement(this.id)">X</button>
-        Заказ успешно оформлен!
-    </div>  
 
    <main>
 
@@ -86,7 +97,7 @@
                       -
                    </button>
                    <input class="amount_bar__manage_input" id="amount_input1" type=text value=0 maxlength='4'
-                   onkeypress='return isValid(event)' onkeyup="changeInput(event, this.id)">
+                   onkeypress='return isValid(event, this.id)' onkeyup="changeInput(event, this.id)">
                    <button class="amount_bar__manage_incr" id="incr_but1" name=increase type=button onclick="increase(this.id)">
                       +
                    </button>
@@ -113,7 +124,7 @@
                       -
                    </button>
                    <input class="amount_bar__manage_input" id="amount_input2" type=text value=0 maxlength='4'
-                   onkeypress='return isValid(event)' onkeyup="changeInput(event, this.id)">
+                   onkeypress='return isValid(event, this.id)' onkeyup="changeInput(event, this.id)">
                    <button class="amount_bar__manage_incr" id="incr_but2" name=increase type=button onclick="increase(this.id)">
                       +
                    </button>
@@ -139,7 +150,7 @@
                       -
                    </button>
                    <input class="amount_bar__manage_input" id="amount_input3" type=text value=0 maxlength='4'
-                   onkeypress='return isValid(event)' onkeyup="changeInput(event, this.id)">
+                   onkeypress='return isValid(event, this.id)' onkeyup="changeInput(event, this.id)">
                    <button class="amount_bar__manage_incr" id="incr_but3" name=increase type=button onclick="increase(this.id)">
                       +
                    </button>
@@ -165,7 +176,7 @@
                       -
                    </button>
                    <input class="amount_bar__manage_input" id="amount_input4" type=text value=0 maxlength='4'
-                   onkeypress='return isValid(event)' onkeyup="changeInput(event, this.id)">
+                   onkeypress='return isValid(event, this.id)' onkeyup="changeInput(event, this.id)">
                    <button class="amount_bar__manage_incr" id="incr_but4" name=increase type=button onclick="increase(this.id)">
                       +
                    </button>
@@ -191,7 +202,7 @@
                       -
                    </button>
                    <input class="amount_bar__manage_input" id="amount_input5" type=text value=0 maxlength='4'
-                   onkeypress='return isValid(event)' onkeyup="changeInput(event, this.id)">
+                   onkeypress='return isValid(event, this.id)' onkeyup="changeInput(event, this.id)">
                    <button class="amount_bar__manage_incr" id="incr_but5" name=increase type=button onclick="increase(this.id)">
                       +
                    </button>
@@ -218,7 +229,7 @@
                       -
                    </button>
                    <input class="amount_bar__manage_input" id="amount_input6" type=text value=0 maxlength='4'
-                   onkeypress='return isValid(event)' onkeyup="changeInput(event, this.id)">
+                   onkeypress='return isValid(event, this.id)' onkeyup="changeInput(event, this.id)">
                    <button class="amount_bar__manage_incr" id="incr_but6" name=increase type=button onclick="increase(this.id)">
                       +
                    </button>
@@ -244,7 +255,7 @@
                       -
                    </button>
                    <input class="amount_bar__manage_input" id="amount_input7" type=text value=0 maxlength='4'
-                   onkeypress='return isValid(event)' onkeyup="changeInput(event, this.id)">
+                   onkeypress='return isValid(event, this.id)' onkeyup="changeInput(event, this.id)">
                    <button class="amount_bar__manage_incr" id="incr_but7" name=increase type=button onclick="increase(this.id)">
                       +
                    </button>
@@ -270,7 +281,7 @@
                       -
                    </button>
                    <input class="amount_bar__manage_input" id="amount_input8" type=text value=0 maxlength='4'
-                   onkeypress='return isValid(event)' onkeyup="changeInput(event, this.id)">
+                   onkeypress='return isValid(event, this.id)' onkeyup="changeInput(event, this.id)">
                    <button class="amount_bar__manage_incr" id="incr_but8" name=increase type=button onclick="increase(this.id)">
                       +
                    </button>
@@ -296,7 +307,7 @@
                       -
                    </button>
                    <input class="amount_bar__manage_input" id="amount_input9" type=text value=0 maxlength='4'
-                   onkeypress='return isValid(event)' onkeyup="changeInput(event, this.id)">
+                   onkeypress='return isValid(event, this.id)' onkeyup="changeInput(event, this.id)">
                    <button class="amount_bar__manage_incr" id="incr_but9" name=increase type=button onclick="increase(this.id)">
                       +
                    </button>
@@ -323,7 +334,7 @@
                       -
                    </button>
                    <input class="amount_bar__manage_input" id="amount_input10" type=text value=0 maxlength='4'
-                   onkeypress='return isValid(event)' onkeyup="changeInput(event, this.id)">
+                   onkeypress='return isValid(event, this.id)' onkeyup="changeInput(event, this.id)">
                    <button class="amount_bar__manage_incr" id="incr_but10" name=increase type=button onclick="increase(this.id)">
                       +
                    </button>
@@ -349,7 +360,7 @@
                       -
                    </button>
                    <input class="amount_bar__manage_input" id="amount_input11" type=text value=0 maxlength='4'
-                   onkeypress='return isValid(event)' onkeyup="changeInput(event, this.id)">
+                   onkeypress='return isValid(event, this.id)' onkeyup="changeInput(event, this.id)">
                    <button class="amount_bar__manage_incr" id="incr_but11" name=increase type=button onclick="increase(this.id)">
                       +
                    </button>
@@ -375,7 +386,7 @@
                       -
                    </button>
                    <input class="amount_bar__manage_input" id="amount_input12" type=text value=0 maxlength='4'
-                   onkeypress='return isValid(event)' onkeyup="changeInput(event, this.id)">
+                   onkeypress='return isValid(event, this.id)' onkeyup="changeInput(event, this.id)">
                    <button class="amount_bar__manage_incr" id="incr_but12" name=increase type=button onclick="increase(this.id)">
                       +
                    </button>
@@ -386,7 +397,7 @@
    </main>
 
     <footer>
-        Сайт сделан при поддержке ООО "Банк Приколов"
+        
     </footer>   
    <script src="./index.js"></script>
 </body>
