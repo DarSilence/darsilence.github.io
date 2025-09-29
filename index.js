@@ -151,21 +151,28 @@ function updateAmount(id){
 function hidElement(reflink) {
     elem = document.getElementById(reflink);
     state = elem.style.display;
+    console.log(`hid ${reflink}`);
     if (state != 'none') elem.style.display='none'; //если включен, то выключаем
-    else elem.style.display='';
 };
 
-function showElement(reflink) {
+function showElement(reflink, new_disp='') {
     elem = document.getElementById(reflink);
     state = elem.style.display;
-    if (state == 'none') elem.style.display=''; //если выключен, то включаем
+    console.log(`show ${reflink} state:${state}`);
+    if (state == 'none') elem.style.display=new_disp; //если выключен, то включаем
+    else elem.style.display=new_disp;
 };
 
-function isValid(event) {
-  const validChars = ["Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8",
-  "Digit9", "Digit0", "Numpad1", "Numpad2", "Numpad3", "Numpad4", "Numpad5", "Numpad6", "Numpad7",
-  "Numpad8", "Numpad9", "Numpad0"];
-  return validChars.includes(event.code);
+function isValid(event, id) {
+    const validChars = ["Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8",
+    "Digit9", "Digit0", "Numpad1", "Numpad2", "Numpad3", "Numpad4", "Numpad5", "Numpad6", "Numpad7",
+    "Numpad8", "Numpad9", "Numpad0"];
+    elem = document.getElementById(id);
+    if (elem.style.color == 'red'){
+        elem.style.color = "black";
+        elem.value = "";
+    }
+    return validChars.includes(event.code);
 };
 
 function changeInput(event, id) {
@@ -241,12 +248,14 @@ function updateBasket(){
             total += goods[id].price * cart[id];
         }
     }
+    total_out = "";
     if (total > 0){
-        out += `<tr><td colspan=5 style="text-align: right;">Итого:</td><td>${total} р</td></tr>`
+        total_out = `Итого: ${total} р`;
     }
     out += "</table>";
 
     document.querySelector('.basket_block__main').innerHTML = out;
+    document.querySelector('.basket_block__sum').innerHTML = total_out;
 };
 
 function showOrder(){
@@ -282,5 +291,47 @@ function getStorage(){
     }
 }
 
-// function makeOrder(){
-// }
+function styleInput(id){
+    elem = document.getElementById(id);
+    if (elem.style.color == 'red'){
+        elem.style.color = "black";
+        elem.value = "";
+    }
+}
+
+function clearInput(id){
+    elem = document.getElementById(id);
+    elem.style.color = 'black';
+    elem.value = "";
+}
+
+function checkInput(id, string, cond){
+    elem = document.getElementById(id);
+    console.log(elem.value, elem.style.color);
+    if (elem.value == "" || elem.style.color == 'red'){
+        ready = false;
+        elem.value = string;
+        elem.style.color = 'red';
+        return false;
+    }
+    return cond;
+}
+
+function makeOrder(f_id, s_id){
+    ready = true;
+    ready = checkInput("order_name", "Введите имя", ready);
+    ready = checkInput("order_surname", "Введите фамилию", ready);
+    ready = checkInput("order_address", "Введите адрес", ready);
+    ready = checkInput("order_phone", "Введите номер телефона", ready);
+    if (ready){
+        console.log("order made");
+        hidElement(f_id);
+        clearInput("order_name");
+        clearInput("order_surname");
+        clearInput("order_address");
+        clearInput("order_phone");
+        hidElement("basket_block");
+        for (const id in cart) {zero(id)};
+        showElement(s_id, 'block');
+    }
+};
