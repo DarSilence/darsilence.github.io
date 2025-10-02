@@ -19,84 +19,84 @@ const goods = {
     "1" : {
         "id" : "1",
         "title" : "Алхимическая паста",
-        "price" : 100,
+        "price" : 300,
         "image" : "components/1.jpg",
         "block" : "block1"
     },
     "2" : {
         "id" : "2",
         "title" : "Костный мозг Альгула",
-        "price" : 200,
+        "price" : 300,
         "image" : "components/2.jpg",
         "block" : "block2"
     },
     "3" : {
         "id" : "3",
         "title" : "Коготь Альгула",
-        "price" : 300,
+        "price" : 600,
         "image" : "components/3.jpg",
         "block" : "block3"
     },
     "4" : {
         "id" : "4",
         "title" : "Корень душистого переца",
-        "price" : 130,
+        "price" : 50,
         "image" : "components/4.jpg",
         "block" : "block4"
     },
     "5" : {
         "id" : "5",
         "title" : "Плоды берберского сорта",
-        "price" : 230,
+        "price" : 30,
         "image" : "components/5.jpg",
         "block" : "block5"
     },
     "6" : {
         "id" : "6",
         "title" : "Бизонья трава",
-        "price" : 330,
+        "price" : 10,
         "image" : "components/6.jpg",
         "block" : "block6"
     },
     "7" : {
         "id" : "7",
         "title" : "Кровавый мох",
-        "price" : 150,
+        "price" : 40,
         "image" : "components/7.jpg",
         "block" : "block7"
     },
     "8" : {
         "id" : "8",
         "title" : "Одуванчик",
-        "price" : 250,
+        "price" : 10,
         "image" : "components/8.jpg",
         "block" : "block8"
     },
     "9" : {
         "id" : "9",
         "title" : "Яд василиска",
-        "price" : 350,
+        "price" : 450,
         "image" : "components/9.jpg",
         "block" : "block9"
     },
     "10" : {
         "id" : "10",
         "title" : "Кортинарий",
-        "price" : 170,
+        "price" : 50,
         "image" : "components/10.jpg",
         "block" : "block10"
     },
     "11" : {
         "id" : "11",
         "title" : "Темная сущность",
-        "price" : 270,
+        "price" : 450,
         "image" : "components/11.jpg",
         "block" : "block11"
     },
     "12" : {
         "id" : "12",
         "title" : "Герцогская вода",
-        "price" : 370,
+        "price" : 140,
         "image" : "components/12.jpg",
         "block" : "block12"
     },
