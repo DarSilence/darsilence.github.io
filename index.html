@@ -10,17 +10,17 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
    
    <!-- Установка названия страницы -->
-   <title>Интернет магазин Laugh shop</title> 
+   <title>Интернет магазин Witchcraft Shop</title> 
 
    <!-- Установка файла отвечающего за стиль страницы -->
    <link rel="stylesheet" href="./style.css"> 
 </head>
 <body onload="updatePage()">
    <header class="page_name">
-      <h1 class="page_name__h1">Laugh Shop</h1>
+      <h1 class="page_name__h1">Witchcraft Shop</h1>
 
       <button class="goods_basket" id="basket_but" onclick="useBasket()">
-         <img class="basket_img">
+         <img class="basket_img" src="components/cart.png">
       </button>
 
       <div class="order_block" id="order_block">
@@ -52,11 +52,11 @@
       </div>
 
       <div class="succsess_block" id="succsess_bl">
-         <p class="succsess_block_button">
-            <button class="succsess_block__but" id="succsess_close" onclick='hidElement("succsess_bl")'>X</button>
-         </p>
          <p class="succsess_block_para">
             Заказ создан!
+         </p>
+         <p class="succsess_block_button">
+            <button class="succsess_block__but" id="succsess_close" onclick='hidElement("succsess_bl")'>X</button>
          </p>
       </div>  
 
@@ -395,10 +395,6 @@
          </div>
       </div>
    </main>
-
-    <footer>
-        
-    </footer>   
    <script src="./index.js"></script>
 </body>
 </html>
