@@ -1,5 +1,5 @@
 body{
-    background-color: F2E8CF;
+    background-color: #F2E8CF;
     color: #1A0500;
     margin:0;
     padding:0;
@@ -38,7 +38,7 @@ body{
     background-color: #A7C957;
     width: 100%;
     height: 70px;
-    border: 100% solid A7C957;
+    border: 100% solid #A7C957;
 }
 
 .page_name__h1{
@@ -49,8 +49,8 @@ body{
 
 .goods_basket{
     opacity: 1;
-    background-color: 6A994E;
-    border-color: 6A994E;
+    background-color: #6A994E;
+    border-color: #6A994E;
     border-style: solid;
     width: 50px;
     height: 50px;
@@ -61,7 +61,6 @@ body{
 }
 
 .basket_img{
-    opacity: 1;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -77,14 +76,14 @@ body{
     position: fixed;
     top: 100px;
     right: 20px;
-    background-color: 6A994E;
+    background-color: #6A994E;
 } 
 
 .but_dec,
 .but_inc,
 .but_del{
-    background-color: A7C957;
-    border-color: A7C957;
+    background-color: #A7C957;
+    border-color: #A7C957;
     border-style: solid;
     border-radius: 10px;
 }
@@ -121,8 +120,8 @@ body{
 
 .basket_block__footer_button{
     font-size: 14pt;
-    background-color: A7C957;
-    border-color: A7C957;
+    background-color: #A7C957;
+    border-color: #A7C957;
     border-style: solid;
 }
 
@@ -142,7 +141,7 @@ body{
     overflow: hidden;
     gap: 30px;
     flex-direction: column;
-    background-color: 6A994E;
+    background-color: #6A994E;
 }
 
 .order_block_header{
@@ -155,8 +154,8 @@ body{
     top: 10px;
     right: 20px;
     font-size: 14pt;
-    background-color: A7C957;
-    border-color: A7C957;
+    background-color: #A7C957;
+    border-color: #A7C957;
     border-style: solid;
     border-radius: 15px;
 }
@@ -164,8 +163,8 @@ body{
 .order_input{
     width: 260px;
     margin: 5px;
-    background-color: F2E8CF;
-    border-color: F2E8CF;
+    background-color: #F2E8CF;
+    border-color: #F2E8CF;
     border-style: solid;
 }
 
@@ -181,8 +180,8 @@ body{
 
 .order_button{
     font-size: 14pt;
-    background-color: A7C957;
-    border-color: A7C957;
+    background-color: #A7C957;
+    border-color: #A7C957;
     border-style: solid;
 }
 
@@ -197,7 +196,7 @@ body{
     margin-top: -35px;
     padding: 5px;
     display: none; 
-    background-color: 6A994E;
+    background-color: #6A994E;
     text-align: center;
 }
 
@@ -213,8 +212,8 @@ body{
 .succsess_block__but{    
     font-size: 12pt;
     font-weight: 600;
-    background-color: A7C957;
-    border-color: A7C957;
+    background-color: #A7C957;
+    border-color: #A7C957;
     border-style: solid;
     border-radius: 12px;
 }
@@ -272,7 +271,7 @@ body{
 .amount_bar__manage_decr,
 .amount_bar__manage_input,
 .amount_bar__manage_incr{
-    background-color: F2E8CF;
-    border-color: F2E8CF;
+    background-color: #F2E8CF;
+    border-color: #F2E8CF;
     border-style: solid;
 }
