@@ -182,7 +182,7 @@ function changeInput(event, id) {
         elem = document.getElementById(id);
         elem.value = Number(elem.value);
         numEl = parseInt(id.match(/\d+/))
-        if (numEl > upborder) numEl = upborder;
+        if (elem.value > upborder) elem.value = upborder;
         cart[numEl] = Number(elem.value);
         updateBasket();
         saveStorage();
