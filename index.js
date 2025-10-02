@@ -13,89 +13,91 @@ const cart = {
     "12" : 0,
 };
 
+upborder = 500;
+
 const goods = {
     "1" : {
         "id" : "1",
-        "title" : "Товар 1",
+        "title" : "Алхимическая паста",
         "price" : 100,
-        "image" : "/components/...",
+        "image" : "components/1.jpg",
         "block" : "block1"
     },
     "2" : {
         "id" : "2",
-        "title" : "Товар 2",
+        "title" : "Костный мозг Альгула",
         "price" : 200,
-        "image" : "/components/...",
+        "image" : "components/2.jpg",
         "block" : "block2"
     },
     "3" : {
         "id" : "3",
-        "title" : "Товар 3",
+        "title" : "Коготь Альгула",
         "price" : 300,
-        "image" : "/components/...",
+        "image" : "components/3.jpg",
         "block" : "block3"
     },
     "4" : {
         "id" : "4",
-        "title" : "Товар 4",
+        "title" : "Корень душистого переца",
         "price" : 130,
-        "image" : "/components/...",
+        "image" : "components/4.jpg",
         "block" : "block4"
     },
     "5" : {
         "id" : "5",
-        "title" : "Товар 5",
+        "title" : "Плоды берберского сорта",
         "price" : 230,
-        "image" : "/components/...",
+        "image" : "components/5.jpg",
         "block" : "block5"
     },
     "6" : {
         "id" : "6",
-        "title" : "Товар 6",
+        "title" : "Бизонья трава",
         "price" : 330,
-        "image" : "/components/...",
+        "image" : "components/6.jpg",
         "block" : "block6"
     },
     "7" : {
         "id" : "7",
-        "title" : "Товар 7",
+        "title" : "Кровавый мох",
         "price" : 150,
-        "image" : "/components/...",
+        "image" : "components/7.jpg",
         "block" : "block7"
     },
     "8" : {
         "id" : "8",
-        "title" : "Товар 8",
+        "title" : "Одуванчик",
         "price" : 250,
-        "image" : "/components/...",
+        "image" : "components/8.jpg",
         "block" : "block8"
     },
     "9" : {
         "id" : "9",
-        "title" : "Товар 9",
+        "title" : "Яд василиска",
         "price" : 350,
-        "image" : "/components/...",
+        "image" : "components/9.jpg",
         "block" : "block9"
     },
     "10" : {
         "id" : "10",
-        "title" : "Товар 10",
+        "title" : "Кортинарий",
         "price" : 170,
-        "image" : "/components/...",
+        "image" : "components/10.jpg",
         "block" : "block10"
     },
     "11" : {
         "id" : "11",
-        "title" : "Товар 11",
+        "title" : "Темная сущность",
         "price" : 270,
-        "image" : "/components/...",
+        "image" : "components/11.jpg",
         "block" : "block11"
     },
     "12" : {
         "id" : "12",
-        "title" : "Товар 12",
+        "title" : "Герцогская вода",
         "price" : 370,
-        "image" : "/components/...",
+        "image" : "components/12.jpg",
         "block" : "block12"
     },
 };
@@ -180,6 +182,7 @@ function changeInput(event, id) {
         elem = document.getElementById(id);
         elem.value = Number(elem.value);
         numEl = parseInt(id.match(/\d+/))
+        if (numEl > upborder) numEl = upborder;
         cart[numEl] = Number(elem.value);
         updateBasket();
         saveStorage();
@@ -191,7 +194,7 @@ function changeInput(event, id) {
 
 function increase(id){
     numId = parseInt(id.match(/\d+/))
-    cart[`${numId}`]++;
+    if (cart[`${numId}`] < upborder) cart[`${numId}`]++;
     updateInput(numId);
     updateBasket();
     saveStorage();
@@ -238,11 +241,11 @@ function updateBasket(){
     for (const id in cart){
         if (cart[id] > 0){
             out += `<tr>`;
-            out += `<td><button id="${id}" name=zero type=button  onclick="zero(this.id)">X</button></td>`
+            out += `<td><button class="but_del" id="${id}" name=zero type=button  onclick="zero(this.id)">X</button></td>`
             out += `<td>${goods[id].title}</td>`;
-            out += `<td><button id="${id}" name=decrease type=button  onclick="decrease(this.id)">-</button></td>`;
+            out += `<td><button class="but_inc" id="${id}" name=decrease type=button  onclick="decrease(this.id)">-</button></td>`;
             out += `<td>${cart[id]}</td>`;
-            out += `<td><button id="${id}" name=decrease type=button  onclick="increase(this.id)">+</button></td>`;
+            out += `<td><button class="but_dec" id="${id}" name=decrease type=button  onclick="increase(this.id)">+</button></td>`;
             out += `<td>${goods[id].price * cart[id]} р</td>`
             out += "</tr>";
             total += goods[id].price * cart[id];
